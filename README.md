@@ -1,4 +1,5 @@
-# GA SEI-09 Capstone Project
+# Delve Directory - Client
+##### Client for [Delve Directory - API](https://github.com/SeannyPhoenix/delve-directory-api)
 ##### Created by [Seanny Drakon Phoenix](https://www.github.com/seannyphoenix)
 
 ### Project Planning Deliverables
