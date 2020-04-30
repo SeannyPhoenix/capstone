@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GA SEI-09 Capstone Project
+##### Created by [Seanny Drakon Phoenix](https://www.github.com/seannyphoenix)
 
-## Available Scripts
+### Project Planning Deliverables
 
-In the project directory, you can run:
+* Scope
 
-### `yarn start`
+  Many people love playing table-top roleplaying games. Unfortunately, it can be difficult to find people to play with. *Delve Directory* will allow game runners, players, and hosts to connect with others to fill tables and enjoy what they love.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* User Stories
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  Users can view available seats at tables in specified locations or online.
+  Users can create accounts.
 
-### `yarn test`
+* Wireframes
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Data Models
 
-### `yarn build`
+  User |
+  -----|
+  screenName|
+  email|
+  password|
+  games|
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  Games |
+  ------|
+  name|
+  publisher|
+  website|
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  Table |
+  ------|
+  owner|
+  location|
+  game|
+  [seats {role, user}]|
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  Message |
+  --------|
+  table|
+  sender|
+  content|
 
-### `yarn eject`
+* Milestones
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  1. Implement Users
+    * Register
+    * Log In
+    * Log Out
+  2. Implement Tables
+    * Create table
+    * List tables
+    * Request seat
+    * Assign seat
+  3. Implement Location Search
+    * Filter tables by game and role
+    * Search tables in a location
+    * Show tables in a zip code
+    * Show tables in a specified radius
+  4. Implement Scroll Menu
+    * Create sliding menu
+    * Add map-style menu
+    * Highlight current room
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Feasibility Study
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  * Packages
+    * [Leaflet](https://leafletjs.com/)
+    * [React Leaflet](https://react-leaflet.js.org/)
+    * [FontAwesome](https://fontawesome.com/)
+    * [geolib](https://github.com/manuelbieh/geolib#readme)
+  * APIs
+    * [Nominatim](https://nominatim.org/)
+  * Data
+    * [US Zip Code Latitude and Longitude](https://public.opendatasoft.com/explore/dataset/us-zip-code-latitude-and-longitude/table/)
