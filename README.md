@@ -11,6 +11,9 @@
 
   Users can view available seats at tables in specified locations or online.
   Users can create accounts.
+  Users can create tables with specified seats.
+  Users can request to join an existing table.
+  Users can send messages to each other or to the feed of a table to which they have a seat.
 
 * Wireframes
 
@@ -21,7 +24,7 @@
   screenName|
   email|
   password|
-  games|
+  [games]|
 
   Games |
   ------|
@@ -62,6 +65,9 @@
     * Create sliding menu
     * Add map-style menu
     * Highlight current room
+  5. Messaging
+    * Send message to other user.
+    * Send message to table feed.
 
 * Feasibility Study
 
