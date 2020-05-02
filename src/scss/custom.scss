@@ -1,0 +1,45 @@
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Calligraffitti|Gentium+Basic|IM+Fell+Double+Pica|Open+Sans&display=swap');
+
+$font-family-serif: 'IM Fell Double Pica', Marcellus, Georgia, 'Palatino Linotype', 'Book Antiqua',
+  Palatino, 'Times New Roman', Times, serif;
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol', 'Noto Color Emoji' !default;
+
+$font-family-handwriting: Calligraffitti, sans-serif;
+
+.serif {
+  font-family: $font-family-serif;
+}
+// Colors
+$dark-sienna: #34120a;
+$coffee: #694d3c;
+$antique-white: #feefe0;
+$wheat: #ecd2af;
+$aero: #8eb8e5;
+$turquoise-green: #b3dec1;
+
+$theme-colors: (
+  'dark': $dark-sienna,
+  'light': $wheat,
+  'primary': $aero,
+  'secondary': $turquoise-green,
+);
+
+$body-bg: $wheat;
+$input-color: $dark-sienna;
+$input-bg: $turquoise-green;
+
+// Other
+.card-header {
+  font-family: $font-family-serif;
+  font-size: 1.5rem;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
