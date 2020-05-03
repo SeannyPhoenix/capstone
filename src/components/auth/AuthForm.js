@@ -4,7 +4,7 @@ import Login from './Login';
 
 class AuthForm extends Component {
   state = {
-    form: null,
+    form: 'none',
     visible: 'show',
   };
 
@@ -19,9 +19,14 @@ class AuthForm extends Component {
   }
 
   componentDidUpdate() {
+    let visible = 'hide';
+    if (this.props.form !== 'none') {
+      visible = 'show';
+    }
     if (this.props.form !== this.state.form) {
       this.setState({
         form: this.props.form,
+        visible,
       });
     }
   }

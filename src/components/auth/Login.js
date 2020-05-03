@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Auth from '../../models/Auth';
+import Session from '../../models/Session';
 
 class Login extends Component {
   state = {
@@ -16,10 +16,11 @@ class Login extends Component {
   async login(event) {
     event.preventDefault();
     console.log(this.state);
-    await Auth.login(this.state);
-    if (true) {
-      this.props.closeForm();
-    }
+    let response = await Session.login(this.state);
+    console.log(response);
+    // if (true) {
+    //   this.props.closeForm();
+    // }
   }
 
   render() {

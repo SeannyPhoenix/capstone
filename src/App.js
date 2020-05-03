@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import Menu from './components/Menu';
 import AuthForm from './components/auth/AuthForm';
-import Auth from './models/Auth';
+import Session from './models/Session';
 
 class App extends Component {
-  state = {};
-
   componentDidMount() {
     this.verify();
   }
 
   async verify() {
-    let result = await Auth.verify();
-    this.setState({
-      user: result.data,
-    });
+    const result = await Session.verify();
+    if (result.error) {
+      this.setState({
+        user: null,
+      });
+    } else {
+      this.setState({
+        user: result.data,
+      });
+    }
   }
 
   render() {

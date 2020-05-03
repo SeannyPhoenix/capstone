@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Auth from '../models/Auth';
+import Session from '../models/Session';
 
 class Menu extends Component {
   logOut() {
-    Auth.logout();
+    Session.logout();
   }
 
   render() {
