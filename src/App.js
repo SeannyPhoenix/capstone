@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu';
-import AuthForm from './components/auth/AuthForm';
 import Session from './models/Session';
+import Menu from './components/Menu';
+import Routes from './routes/Routes';
+import ToastContainer from './containers/ToastContainer';
 
 class App extends Component {
+  state = {
+    toasts: [],
+  };
+
+  addToast(data) {
+    let toasts = this.state.toasts;
+    toasts.push(data);
+    this.state.setState({
+      toasts,
+    });
+  }
+
   componentDidMount() {
     this.verify();
   }
@@ -24,14 +37,19 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-2">
-            <Menu />
+        <div className="row vh-100">
+          <div className="col-2 bg-dark d-none d-lg-block">
+            <Menu user={this.state.user} />
           </div>
           <div className="col-10">
-            <AuthForm form="login" />
+            <Routes
+              addToast={this.addToast.bind(this)}
+              user={this.state.user}
+              verify={this.verify.bind(this)}
+            />
           </div>
         </div>
+        <ToastContainer toasts={this.state.toasts} />
       </div>
     );
   }
