@@ -3,28 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import Session from '../models/Session';
 
 class Menu extends Component {
-  state = {
-    user: this.props.user,
-  };
-
   logOut() {
     Session.logout();
-  }
-
-  componentDidMount() {
-    this.componentDidUpdate();
-  }
-
-  componentDidUpdate() {
-    if (this.state.user !== this.props.user) {
-      this.setState({
-        user: this.props.user,
-      });
-    }
+    this.props.verify();
   }
 
   buildProfileSection() {
-    if (this.state.user) {
+    if (this.props.user) {
       return (
         <div>
           <NavLink className="nav-link" activeClassName="active" to="/profile">
@@ -35,22 +20,21 @@ class Menu extends Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <NavLink className="nav-link" activeClassName="active" to="/login">
-            Log In
-          </NavLink>
-          <NavLink className="nav-link" activeClassName="active" to="/register">
-            Register
-          </NavLink>
-        </div>
-      );
     }
+    return (
+      <div>
+        <NavLink className="nav-link" activeClassName="active" to="/login">
+          Log In
+        </NavLink>
+        <NavLink className="nav-link" activeClassName="active" to="/register">
+          Register
+        </NavLink>
+      </div>
+    );
   }
 
   render() {
-    let profileSection = this.buildProfileSection();
+    const profileSection = this.buildProfileSection();
     return (
       <nav className="nav flex-column text-light bg-dark serif h-100 pt-4">
         <Link className="nav-link card-header" to="/">
@@ -63,7 +47,7 @@ class Menu extends Component {
         <div className="dropdown-divider" />
         {profileSection}
         <div className="dropdown-divider" />
-        <NavLink className="nav-link" to="/about">
+        <NavLink className="nav-link mb-2" to="/about">
           About Delve Directory
         </NavLink>
       </nav>

@@ -44,4 +44,8 @@ $nav-tabs-link-active-color: $turquoise-green;
   font-size: 1.5rem;
 }
 
+.toast-container {
+  position: relative;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';

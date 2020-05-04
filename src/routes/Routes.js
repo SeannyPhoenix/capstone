@@ -10,8 +10,10 @@ function Routes(props) {
         <div>Home</div>
       </Route>
       <Route path={['/login', '/register', '/profile/edit']}>
-        <Session verify={props.verify} user={props.user} />
+        <Session verify={props.verify} user={props.user} addToast={props.addToast} />
       </Route>
+      <Route path="/profile/:id?" />
+      <Route path="/tables" />
       <Route path="/">
         <Redirect to="/" />
       </Route>

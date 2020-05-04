@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import Session from './models/Session';
 import Menu from './components/Menu';
 import Routes from './routes/Routes';
@@ -12,7 +13,7 @@ class App extends Component {
   addToast(data) {
     let toasts = this.state.toasts;
     toasts.push(data);
-    this.state.setState({
+    this.setState({
       toasts,
     });
   }
@@ -36,10 +37,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row vh-100">
+      <Container fluid>
+        <Row className="vh-100">
           <div className="col-2 bg-dark d-none d-lg-block">
-            <Menu user={this.state.user} />
+            <Menu user={this.state.user} verify={this.verify.bind(this)} />
           </div>
           <div className="col-10">
             <Routes
@@ -47,10 +48,10 @@ class App extends Component {
               user={this.state.user}
               verify={this.verify.bind(this)}
             />
+            <ToastContainer toasts={this.state.toasts} />
           </div>
-        </div>
-        <ToastContainer toasts={this.state.toasts} />
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
