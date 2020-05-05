@@ -24,28 +24,50 @@ $antique-white: #feefe0;
 $wheat: #ecd2af;
 $aero: #8eb8e5;
 $turquoise-green: #b3dec1;
+// $gold-crayola: #f6ca83;
+// $orange-soda: #f06543;
+$cadmium-orange: #f09343;
 
 $theme-colors: (
   'dark': $dark-sienna,
   'light': $wheat,
   'primary': $aero,
   'secondary': $turquoise-green,
+  'warning': $cadmium-orange,
+  'coffee': $coffee,
 );
 
 $body-bg: $wheat;
 $input-color: $dark-sienna;
-$input-bg: $turquoise-green;
+// $input-bg: $turquoise-green;
 $dropdown-divider-bg: $wheat;
 $nav-tabs-link-active-color: $turquoise-green;
 
+// Borders and Shadows
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+@mixin paper-shadow {
+  box-shadow: 0 0.3rem 0.5rem 0.2rem $coffee;
+}
+
 // Other
+.card {
+  @include paper-shadow;
+}
+
 .card-header {
   font-family: $font-family-serif;
   font-size: 1.5rem;
 }
 
-.toast-container {
-  position: relative;
+.pointer {
+  cursor: pointer;
 }
+
+// .toast-container {
+//   position: relative;
+// }
 
 @import '~bootstrap/scss/bootstrap.scss';
