@@ -38,8 +38,8 @@ $theme-colors: (
 );
 
 $body-bg: $wheat;
+$card-bg: $antique-white;
 $input-color: $dark-sienna;
-// $input-bg: $turquoise-green;
 $dropdown-divider-bg: $wheat;
 $nav-tabs-link-active-color: $turquoise-green;
 
@@ -64,6 +64,11 @@ $border-radius-sm: 0;
 
 .pointer {
   cursor: pointer;
+}
+
+.leaflet-container {
+  height: 25vw;
+  min-height: 300px;
 }
 
 // .toast-container {

@@ -14,7 +14,7 @@ function Routes(props) {
         <Session verify={props.verify} user={props.user} addToast={props.addToast} />
       </Route>
       <Route path="/profile/:id?">
-        <Profile user={props.user} />
+        <Profile user={props.user} clientIpData={props.clientIpData} />
       </Route>
       <Route path="/tables" />
       <Route path="/">

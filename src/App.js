@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Session from './models/Session';
+import GeoData from './models/GeoData';
 import Menu from './components/Menu';
 import Routes from './routes/Routes';
 import ToastContainer from './containers/ToastContainer';
@@ -20,6 +21,23 @@ class App extends Component {
 
   componentDidMount() {
     this.verify();
+    this.getClientIpData();
+  }
+
+  async getClientIpData() {
+    const result = await GeoData.getClientIpData();
+    if (result.error) {
+      this.setState({
+        clientIpData: null,
+        clientLocation: null,
+      });
+    } else {
+      let clientIpData = result.data;
+      clientIpData.location = [clientIpData.latitude, clientIpData.longitude];
+      this.setState({
+        clientIpData,
+      });
+    }
   }
 
   async verify() {
@@ -42,11 +60,12 @@ class App extends Component {
           <div className="col-2 bg-dark d-none d-lg-block">
             <Menu user={this.state.user} verify={this.verify.bind(this)} />
           </div>
-          <div className="col-10">
+          <div className="col-lg-10 col-12">
             <Routes
               addToast={this.addToast.bind(this)}
               user={this.state.user}
               verify={this.verify.bind(this)}
+              clientIpData={this.state.clientIpData}
             />
             <ToastContainer toasts={this.state.toasts} />
           </div>

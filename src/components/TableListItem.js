@@ -7,8 +7,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function TableListItem(props) {
-  console.log(props);
-
   const origin = props.name || 'Table';
 
   const [name, setName] = useState(origin);

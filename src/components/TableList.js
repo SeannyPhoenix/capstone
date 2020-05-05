@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Table } from 'react-bootstrap';
+import { Row, Col, Card, Table } from 'react-bootstrap';
 import TableListItem from './TableListItem';
 import models from '../models';
 
@@ -43,16 +43,23 @@ export default class TableList extends Component {
     ));
 
     return (
-      <Row>
-        <Col>
-          <Table borderless size="sm">
-            <tbody>
-              {options}
-              <TableListItem newTable dbAction={this.dbAction.bind(this)} />
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
+      <Col md={6}>
+        <Card className="m-3">
+          <Card.Header>Game Tables</Card.Header>
+          <Card.Body>
+            <Row>
+              <Col>
+                <Table borderless size="sm">
+                  <tbody>
+                    {options}
+                    <TableListItem newTable dbAction={this.dbAction.bind(this)} />
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      </Col>
     );
   }
 }
