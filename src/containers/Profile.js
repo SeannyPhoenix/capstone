@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
-import ProfileMap from './ProfileMap';
-import TableList from './TableList';
+import ProfileMap from '../components/ProfileMap';
+import TableList from '../components/TableList';
 
 class Profile extends Component {
   state = {

@@ -10,13 +10,14 @@ $font-family-serif: 'IM Fell Double Pica', Marcellus, Georgia, 'Palatino Linotyp
 
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', Roboto,
   'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-  'Segoe UI Symbol', 'Noto Color Emoji' !default;
+  'Segoe UI Symbol', 'Noto Color Emoji';
 
 $font-family-handwriting: Calligraffitti, sans-serif;
 
 .serif {
   font-family: $font-family-serif;
 }
+
 // Colors
 $dark-sienna: #34120a;
 $coffee: #694d3c;
@@ -24,8 +25,6 @@ $antique-white: #feefe0;
 $wheat: #ecd2af;
 $aero: #8eb8e5;
 $turquoise-green: #b3dec1;
-// $gold-crayola: #f6ca83;
-// $orange-soda: #f06543;
 $cadmium-orange: #f09343;
 
 $theme-colors: (

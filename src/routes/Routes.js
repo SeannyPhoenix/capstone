@@ -2,7 +2,8 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Session from '../components/Session';
-import Profile from '../components/Profile';
+import Profile from '../containers/Profile';
+import Table from '../containers/Table';
 
 function Routes(props) {
   return (
@@ -16,7 +17,9 @@ function Routes(props) {
       <Route path="/profile/:id?">
         <Profile user={props.user} clientIpData={props.clientIpData} />
       </Route>
-      <Route path="/tables" />
+      <Route path="/tables/:id?">
+        <Table user={props.user} />
+      </Route>
       <Route path="/">
         <Redirect to="/" />
       </Route>

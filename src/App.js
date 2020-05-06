@@ -4,7 +4,7 @@ import Session from './models/Session';
 import GeoData from './models/GeoData';
 import Menu from './components/Menu';
 import Routes from './routes/Routes';
-import ToastContainer from './containers/ToastContainer';
+import Toast from './containers/Toast';
 
 class App extends Component {
   state = {
@@ -67,7 +67,7 @@ class App extends Component {
               verify={this.verify.bind(this)}
               clientIpData={this.state.clientIpData}
             />
-            <ToastContainer toasts={this.state.toasts} />
+            <Toast toasts={this.state.toasts} />
           </div>
         </Row>
       </Container>
