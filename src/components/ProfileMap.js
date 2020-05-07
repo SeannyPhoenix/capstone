@@ -12,7 +12,7 @@ const defaultZoom = 12;
 export default function ProfileMap(props) {
   const [clientIpData, setClientIpData] = useState(props.clientIpData);
   const [position, setPosition] = useState(props.clientIpData ? props.clientIpData.location : null);
-  const [searchString, setSearchString] = useState(null);
+  const [searchString, setSearchString] = useState('');
 
   if (clientIpData !== props.clientIpData) {
     setClientIpData(props.clientIpData);
@@ -24,7 +24,6 @@ export default function ProfileMap(props) {
     setPosition(props.clientIpData.location);
   }
 
-  console.log(searchString);
   return (
     <Col md={6}>
       <Card className="m-3">

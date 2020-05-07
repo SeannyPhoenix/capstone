@@ -37,6 +37,7 @@ export default class TableList extends Component {
       <TableListItem
         key={table._id}
         name={table.name}
+        published={table.published}
         id={table._id}
         dbAction={this.dbAction.bind(this)}
       />
