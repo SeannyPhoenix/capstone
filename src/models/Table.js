@@ -39,4 +39,13 @@ export default class Table {
       return error.response.data;
     }
   }
+
+  static async delete(id) {
+    try {
+      const response = await axios.delete(`${REACT_APP_API_URL}/tables/${id}`);
+      return response.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
 }

@@ -3,55 +3,58 @@ import { withRouter } from 'react-router';
 import { Redirect } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
 import models from '../models';
+import TableGame from '../components/table/TableGame';
+import TableSeats from '../components/table/TableSeats';
 
 function Table(props) {
   const [table, setTable] = useState(null);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    if (!table) {
-      getTable(props.match.params.id);
+    async function getTable() {
+      const response = await models.Table.show(props.match.params.id);
+      setTable(response);
     }
-  }, [table, props.match.params.id]);
+    getTable();
+    setUpdate(false);
+  }, [update, props.match.params.id]);
 
-  async function getTable(id) {
-    const response = await models.Table.show(id);
-    setTable(response);
+  async function deleteTable() {
+    await models.Table.delete(table._id);
+    props.history.goBack();
   }
 
   if (!table) {
     return <div />;
   }
 
-  if (table.error) {
+  if (table.error || table.deleted) {
     return <Redirect to="/" />;
   }
 
+  function forceUpdate() {
+    setUpdate(true);
+  }
+
   return (
-    <Row className="my-3">
-      <Col>
-        <Card>
-          <Card.Header>
-            {table.name}
-          </Card.Header>
-          <Card.Body>
-            <Row>
-              <Col md={6}>
-                <p>Game</p>
-              </Col>
-              <Col md={6}>
-                <p>Details</p>
-              </Col>
-              <Col md={6}>
-                <p>Seats</p>
-              </Col>
-              <Col md={6}>
-                <p>Messages</p>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-      </Col>
-    </Row>
+    <div>
+      <Row className="my-3">
+        <TableGame table={table} deleteTable={deleteTable} getTable={forceUpdate} />
+        <Col md={6}>
+          <Card className="m-3">
+            <Card.Header>Details</Card.Header>
+            <Card.Body />
+          </Card>
+        </Col>
+        <TableSeats table={table} getTable={forceUpdate} />
+        <Col md={6}>
+          <Card className="m-3">
+            <Card.Header>Messages</Card.Header>
+            <Card.Body />
+          </Card>
+        </Col>
+      </Row>
+    </div>
   );
 }
 

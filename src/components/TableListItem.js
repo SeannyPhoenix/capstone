@@ -18,13 +18,14 @@ export default function TableListItem(props) {
   const [dirty, setDirty] = useState(name === origin);
   const [viewTable, setViewTable] = useState(false);
 
-  //
+  // If we save the table, we need to update
+  // the origin and deactive edit mode
   useEffect(() => {
     if (!props.newTable) {
       setOrigin(props.name);
       setEdit(false);
     }
-  }, [props.name]);
+  }, [props.name, props.newTable]);
 
   // Dirty means unsaved edits
   if (dirty !== (name !== origin)) {
@@ -38,7 +39,8 @@ export default function TableListItem(props) {
     setEdit(!edit);
   }
 
-  // When the form is submitted, either 'Enter' key or icon click
+  // When the form is submitted,
+  // either 'Enter' key or icon click
   async function action(event) {
     if (event) {
       event.preventDefault();
