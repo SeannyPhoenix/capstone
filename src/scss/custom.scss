@@ -108,8 +108,8 @@ $border-radius-sm: 0;
 
 .table-top {
   position: absolute;
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
   border-radius: 50%;
   background-color: $dark-sienna;
 }
@@ -128,7 +128,7 @@ $border-radius-sm: 0;
   .rotate-#{$i} {
     opacity: 1;
     transform-origin: center;
-    transform: rotate(#{$i}deg) translateY(-125px) rotate(-#{$i}deg);
+    transform: rotate(#{$i}deg) translateY(-110px) rotate(-#{$i}deg);
     transition: transform 0.5s, opacity 0.5s 0.5s;
   }
 }
