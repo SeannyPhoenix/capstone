@@ -3,7 +3,8 @@ import { withRouter } from 'react-router';
 import { Redirect } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
 import models from '../models';
-import TableGame from '../components/table/TableGame';
+import TableDetail from '../components/table/TableDetail';
+import TableInfo from '../components/table/TableInfo';
 import TableSeats from '../components/table/TableSeats';
 
 function Table(props) {
@@ -39,13 +40,8 @@ function Table(props) {
   return (
     <div>
       <Row className="my-3">
-        <TableGame table={table} deleteTable={deleteTable} getTable={forceUpdate} />
-        <Col md={6}>
-          <Card className="m-3">
-            <Card.Header>Details</Card.Header>
-            <Card.Body />
-          </Card>
-        </Col>
+        <TableDetail table={table} deleteTable={deleteTable} getTable={forceUpdate} />
+        <TableInfo />
         <TableSeats table={table} getTable={forceUpdate} />
         <Col md={6}>
           <Card className="m-3">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Row, Col, Card, Button, ButtonGroup,
 } from 'react-bootstrap';
@@ -10,7 +10,7 @@ import SeatEdit from './SeatEdit';
 function TableGame({ table, getTable }) {
   const [action, setAction] = useState({ action: '', id: null });
 
-  function handleEdit(action, seatId, data) {
+  async function handleEdit(action, seatId, data) {
     switch (action) {
       case 'delete':
         removeSeat(seatId);
@@ -18,6 +18,11 @@ function TableGame({ table, getTable }) {
       case 'cancel':
         setAction({ action: '', id: null });
         break;
+      case 'save':
+        setAction({ action: '', id: null });
+        await models.Seat.update(seatId, data);
+        break;
+      default:
     }
   }
 
@@ -34,7 +39,6 @@ function TableGame({ table, getTable }) {
 
   const seatIcons = table.seats.map((seat, number) => {
     const rotation = Math.floor((360 * number) / table.seats.length);
-    const hover = action.id === seat._id && action.action === 'hover';
     return (
       <SeatIcon
         key={seat._id}

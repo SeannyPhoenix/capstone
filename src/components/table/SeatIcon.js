@@ -5,7 +5,6 @@ export default function SeatIcon({
   seat, rotation, remove, action, setAction,
 }) {
   const [rot, setRot] = useState(null);
-  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setTimeout(

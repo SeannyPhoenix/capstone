@@ -1,41 +1,52 @@
-import React from 'react';
-import {
-  Row, Col, Card, Button, ButtonGroup,
-} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Dropdown } from 'react-bootstrap';
 import models from '../../models';
-import GameItem from './GameItem';
 
-function TableGame(props) {
-  async function updateGame(id) {
-    await models.Table.update(props.table._id, { game: id });
-    props.getTable();
+export default function TableName({ game, updateTable, edit }) {
+  const [allGames, setAllGames] = useState([]);
+  const [gameList, setGameList] = useState([]);
+
+  useEffect(() => {
+    setGameList(
+      allGames.map((game) => (
+        <Dropdown.Item
+          key={game._id}
+          onClick={() => {
+            updateTable({ game: game._id });
+          }}
+        >
+          {game.name}
+        </Dropdown.Item>
+      )),
+    );
+  }, [allGames, updateTable]);
+
+  useEffect(() => {
+    if (allGames.length === 0) {
+      getGames();
+    }
+  }, [allGames]);
+
+  async function getGames() {
+    const allGames = await models.Game.index();
+    setAllGames(allGames);
   }
 
   return (
-    <Col md={6}>
-      <Card className="m-3">
-        <Card.Header className="navbar">
-          {`Table: ${props.table.name}`}
-          <ButtonGroup className="float-right">
-            <Button className="btn-primary">Edit</Button>
-            <Button className="btn-primary" onClick={props.deleteTable}>
-              Delete
-            </Button>
-          </ButtonGroup>
-        </Card.Header>
-        <Card.Body>
-          <Row>
-            <Col>
-              <GameItem game={props.table.game} updateGame={updateGame} />
-            </Col>
-          </Row>
-          <Row>
-            <Col>p</Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    </Col>
+    <Row>
+      <Col>
+        <div>Game:</div>
+      </Col>
+      <Col>
+        <Dropdown>
+          <Dropdown.Toggle variant="none" className="float-right">
+            {game ? game.name : 'Choose Game'}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {gameList}
+          </Dropdown.Menu>
+        </Dropdown>
+      </Col>
+    </Row>
   );
 }
-
-export default TableGame;

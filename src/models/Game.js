@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3731/api/v1';
+const { REACT_APP_API_URL } = process.env;
 
 export default class Table {
   static async index() {

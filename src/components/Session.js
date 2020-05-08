@@ -85,10 +85,6 @@ class Register extends Component {
     let response = await Session.login(data);
     if (response.user) {
       console.log(`Log In Success`, `Welcome back, ${response.user.screenName}`);
-      this.props.addToast({
-        title: `Log In Success`,
-        body: `Welcome back, ${response.user.screenName}!`,
-      });
     }
     this.props.verify();
   }
