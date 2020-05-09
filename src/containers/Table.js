@@ -20,11 +20,6 @@ function Table(props) {
     setUpdate(false);
   }, [update, props.match.params.id]);
 
-  async function deleteTable() {
-    await models.Table.delete(table._id);
-    props.history.goBack();
-  }
-
   if (!table) {
     return <div />;
   }
@@ -40,8 +35,8 @@ function Table(props) {
   return (
     <div>
       <Row className="my-3">
-        <TableDetail table={table} deleteTable={deleteTable} getTable={forceUpdate} />
-        <TableInfo />
+        <TableDetail table={table} getTable={forceUpdate} />
+        <TableInfo table={table} getTable={forceUpdate} />
         <TableSeats table={table} getTable={forceUpdate} />
         <Col md={6}>
           <Card className="m-3">

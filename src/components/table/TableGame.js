@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Dropdown } from 'react-bootstrap';
 import models from '../../models';
 
-export default function TableName({ game, updateTable, edit }) {
+export default function TableGame({ game, updateData, edit }) {
   const [allGames, setAllGames] = useState([]);
   const [gameList, setGameList] = useState([]);
 
@@ -12,14 +12,15 @@ export default function TableName({ game, updateTable, edit }) {
         <Dropdown.Item
           key={game._id}
           onClick={() => {
-            updateTable({ game: game._id });
+            console.log(game._id);
+            updateData({ game });
           }}
         >
           {game.name}
         </Dropdown.Item>
       )),
     );
-  }, [allGames, updateTable]);
+  }, [allGames, updateData]);
 
   useEffect(() => {
     if (allGames.length === 0) {
@@ -33,20 +34,16 @@ export default function TableName({ game, updateTable, edit }) {
   }
 
   return (
-    <Row>
-      <Col>
-        <div>Game:</div>
-      </Col>
-      <Col>
-        <Dropdown>
-          <Dropdown.Toggle variant="none" className="float-right">
-            {game ? game.name : 'Choose Game'}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {gameList}
-          </Dropdown.Menu>
-        </Dropdown>
-      </Col>
-    </Row>
+    <Col md={6}>
+      <div>Game:</div>
+      <Dropdown>
+        <Dropdown.Toggle variant="none" disabled={!edit}>
+          {game ? game.name : 'Choose Game'}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {gameList}
+        </Dropdown.Menu>
+      </Dropdown>
+    </Col>
   );
 }

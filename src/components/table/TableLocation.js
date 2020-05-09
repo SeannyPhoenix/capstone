@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Dropdown } from 'react-bootstrap';
+import { Col, Form } from 'react-bootstrap';
 import models from '../../models';
 
-export default function TableLocation({ location, updateTable, edit }) {
+export default function TableLocation({ location, updateData, edit }) {
   return (
-    <Row>
-      <Col>
-        <div>Location:</div>
-      </Col>
-      <Col>
-        <div className="float-right pr-4">
-          {location ? location.zip : 'Zip Code'}
-        </div>
-      </Col>
-    </Row>
+    <Col md={6}>
+      <div>Location:</div>
+      <Form.Control
+        type="input"
+        disabled={!edit}
+        value={location ? location.zipcode : 'Zip Code'}
+        onChange={(event) => {
+          updateData({ location: { zip: event.target.value } });
+        }}
+      />
+    </Col>
   );
 }
