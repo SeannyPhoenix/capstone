@@ -1,53 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
+import models from '../models';
 import ProfileMap from '../components/ProfileMap';
 import TableList from '../components/TableList';
 
-class Profile extends Component {
-  state = {
-    tables: [],
-    createTable: false,
-  };
+function Profile({ user, clientIpData }) {
+  const [tables, setTables] = useState([]);
 
-  toggleCreateTable() {
-    this.setState({
-      createTable: !this.state.createTable,
-    });
+  useEffect(() => {
+    getTables();
+  }, [user]);
+
+  async function getTables() {
+    setTables(await models.Table.indexUserTables());
   }
 
-  componentDidMount() {
-    this.componentDidUpdate();
+  if (!user) {
+    return <Redirect to="/login" />;
   }
 
-  componentDidUpdate() {
-    if (this.state.user !== this.props.user) {
-      let tables = [];
-      //get tables
-      this.setState({
-        user: this.props.user,
-        tables,
-      });
-    }
-  }
-
-  render() {
-    if (!this.props.user) {
-      return <Redirect to="/login" />;
-    }
-    return (
-      <Row>
-        <Col md={6}>
-          <Card className="m-3">
-            <Card.Header>{`Welcome, ${this.props.user.screenName}.`}</Card.Header>
-            <Card.Body />
-          </Card>
-        </Col>
-        <ProfileMap user={this.props.user} clientIpData={this.props.clientIpData} />
-        <TableList user={this.props.user} />
-      </Row>
-    );
-  }
+  return (
+    <Row>
+      <Col md={6}>
+        <Card className="m-3">
+          <Card.Header>
+            {`Welcome, ${user.screenName}.`}
+          </Card.Header>
+          <Card.Body />
+        </Card>
+      </Col>
+      <ProfileMap user={user} clientIpData={clientIpData} tables={tables} />
+      <TableList user={user} tables={tables} getTables={getTables} />
+    </Row>
+  );
 }
 
 export default Profile;

@@ -82,10 +82,7 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    let response = await Session.login(data);
-    if (response.user) {
-      console.log(`Log In Success`, `Welcome back, ${response.user.screenName}`);
-    }
+    await Session.login(data);
     this.props.verify();
   }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 import { Row, Col, Card } from 'react-bootstrap';
 import models from '../../models';
@@ -30,7 +30,6 @@ function TableDetail({ table, getTable }) {
         setData(table);
         break;
       case 'save':
-        console.log('saving: ', data);
         updateTable(table._id, data);
         setEdit(false);
         getTable();
@@ -61,7 +60,7 @@ function TableDetail({ table, getTable }) {
           <Row>
             <TableOwner owner={table.owner} />
             <TableGame game={data.game} updateData={updateData} edit={edit} />
-            <TableLocation location={data.location} updateData={updateData} edit={edit} />
+            <TableLocation zip={data.zip} updateData={updateData} edit={edit} />
             <TablePublished published={data.published} updateData={updateData} edit={edit} />
             <TableActions table={table} edit={edit} setEdit={setEdit} doAction={doAction} />
           </Row>

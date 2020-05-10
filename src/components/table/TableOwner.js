@@ -1,6 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import models from '../../models';
+import { Col } from 'react-bootstrap';
 
 export default function TableLocation({ owner }) {
   return (

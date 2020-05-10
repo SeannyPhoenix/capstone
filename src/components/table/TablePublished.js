@@ -8,8 +8,6 @@ export default function TablePublished({ published, updateData, edit }) {
     setIsPublished(published);
   }, [published]);
 
-  console.log('Published: ', isPublished);
-
   return (
     <Col md={6}>
       <div>Published:</div>
@@ -20,7 +18,6 @@ export default function TablePublished({ published, updateData, edit }) {
           disabled={!edit}
           label={isPublished ? 'Published to web' : 'Unpublished'}
           onChange={(event) => {
-            console.log(event.target.value);
             updateData({ published: !isPublished });
             setIsPublished(!isPublished);
           }}

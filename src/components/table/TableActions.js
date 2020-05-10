@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-  Row, Col, InputGroup, ButtonGroup, Button,
+  Row, Col, ButtonGroup, Button,
 } from 'react-bootstrap';
-import models from '../../models';
 
 export default function TableActions({
   table, edit, setEdit, doAction,

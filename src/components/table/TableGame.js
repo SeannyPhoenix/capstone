@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Dropdown } from 'react-bootstrap';
+import { Col, Dropdown } from 'react-bootstrap';
 import models from '../../models';
 
 export default function TableGame({ game, updateData, edit }) {
@@ -12,7 +12,6 @@ export default function TableGame({ game, updateData, edit }) {
         <Dropdown.Item
           key={game._id}
           onClick={() => {
-            console.log(game._id);
             updateData({ game });
           }}
         >

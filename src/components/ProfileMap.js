@@ -1,27 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Col, Card, Form, InputGroup,
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchLocation } from '@fortawesome/free-solid-svg-icons';
 import { faDotCircle } from '@fortawesome/free-regular-svg-icons';
-import { Map as LeafletMap, TileLayer } from 'react-leaflet';
+import {
+  Map as LeafletMap, TileLayer, Marker, Popup,
+} from 'react-leaflet';
 
 const defaultZoom = 12;
 
-export default function ProfileMap(props) {
-  const [clientIpData, setClientIpData] = useState(props.clientIpData);
-  const [position, setPosition] = useState(props.clientIpData ? props.clientIpData.location : null);
+export default function ProfileMap({ user, clientIpData, tables }) {
   const [searchString, setSearchString] = useState('');
+  const [clientLocation, setClientLocation] = useState(clientIpData ? clientIpData.location : null);
 
-  if (clientIpData !== props.clientIpData) {
-    setClientIpData(props.clientIpData);
-    setPosition(props.clientIpData.location);
-    setSearchString(props.clientIpData.postal);
-  }
+  useEffect(() => {
+    if (clientIpData) {
+      setClientLocation(clientIpData.location);
+    }
+  }, [clientIpData]);
 
-  function resetCenter() {
-    setPosition(props.clientIpData.location);
+  const mapTables = tables
+    .filter((table) => table.published && table.coordinates)
+    .map((table) => (
+      <Marker key={table._id} position={table.coordinates}>
+        <Popup>
+          {Popup}
+        </Popup>
+      </Marker>
+    ));
+
+  function buildMap() {
+    if (clientLocation) {
+      return (
+        <LeafletMap center={clientLocation} zoom={defaultZoom} className="border-coffee">
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, <a href="http://www.stamen.com/">Stamen Design</a>'
+            url="http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
+          />
+          <Marker position={clientLocation} />
+          {mapTables}
+        </LeafletMap>
+      );
+    }
   }
 
   return (
@@ -33,12 +55,7 @@ export default function ProfileMap(props) {
             <InputGroup>
               <InputGroup.Prepend>
                 <InputGroup.Text className="px-1 pointer">
-                  <FontAwesomeIcon
-                    icon={faDotCircle}
-                    fixedWidth
-                    className="mx-1 text-coffee"
-                    onClick={resetCenter}
-                  />
+                  <FontAwesomeIcon icon={faDotCircle} fixedWidth className="mx-1 text-coffee" />
                 </InputGroup.Text>
               </InputGroup.Prepend>
               <Form.Control
@@ -58,12 +75,7 @@ export default function ProfileMap(props) {
               </InputGroup.Append>
             </InputGroup>
           </Form>
-          <LeafletMap center={position} zoom={defaultZoom} className="border-coffee">
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, <a href="http://www.stamen.com/">Stamen Design</a>'
-              url="http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
-            />
-          </LeafletMap>
+          {buildMap()}
         </Card.Body>
       </Card>
     </Col>
