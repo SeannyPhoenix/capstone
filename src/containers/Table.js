@@ -33,19 +33,17 @@ function Table(props) {
   }
 
   return (
-    <div>
-      <Row className="my-3">
-        <TableDetail table={table} getTable={forceUpdate} />
-        <TableInfo table={table} getTable={forceUpdate} />
-        <TableSeats table={table} getTable={forceUpdate} />
-        <Col md={6}>
-          <Card className="m-3">
-            <Card.Header>Messages</Card.Header>
-            <Card.Body />
-          </Card>
-        </Col>
-      </Row>
-    </div>
+    <Row className="my-3">
+      <TableDetail table={table} getTable={forceUpdate} />
+      <TableInfo table={table} getTable={forceUpdate} />
+      <TableSeats table={table} getTable={forceUpdate} />
+      <Col md={6}>
+        <Card className="m-3">
+          <Card.Header>Messages</Card.Header>
+          <Card.Body />
+        </Card>
+      </Col>
+    </Row>
   );
 }
 

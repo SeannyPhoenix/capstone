@@ -5,6 +5,7 @@ import GeoData from './models/GeoData';
 import Menu from './components/Menu';
 import Routes from './routes/Routes';
 import Toast from './containers/Toast';
+import models from './models';
 
 class App extends Component {
   state = {
@@ -38,6 +39,13 @@ class App extends Component {
         clientIpData,
       });
     }
+  }
+
+  async logout() {
+    await models.Session.logout();
+    this.setState({
+      user: null,
+    });
   }
 
   async verify() {

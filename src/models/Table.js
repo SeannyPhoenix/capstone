@@ -13,6 +13,15 @@ export default class Table {
     }
   }
 
+  static async index() {
+    try {
+      const response = await axios.get(`${REACT_APP_API_URL}/tables`);
+      return response.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
+
   static async show(id) {
     try {
       const response = await axios.get(`${REACT_APP_API_URL}/tables/${id}`);

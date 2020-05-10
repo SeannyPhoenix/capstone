@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withRouter } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
 import Session from '../models/Session';
 
-class Menu extends Component {
-  logOut() {
+function Menu({ user, verify, history }) {
+  async function logOut() {
     Session.logout();
-    this.props.verify();
+    await verify();
+    history.push('/');
   }
 
-  buildProfileSection() {
-    if (this.props.user) {
+  function profileSection() {
+    console.log(user);
+    if (user) {
       return (
         <div>
           <NavLink className="nav-link" activeClassName="active" to="/profile">
             Profile
           </NavLink>
-          <div className="nav-link" onClick={this.logOut.bind(this)}>
+          <div className="nav-link" onClick={logOut}>
             Log Out
           </div>
         </div>
@@ -33,26 +36,23 @@ class Menu extends Component {
     );
   }
 
-  render() {
-    const profileSection = this.buildProfileSection();
-    return (
-      <nav className="nav flex-column text-light bg-dark serif h-100 pt-4">
-        <Link className="nav-link card-header" to="/">
-          Delve Directory
-        </Link>
-        <div className="dropdown-divider" />
-        <NavLink className="nav-link mb-auto" to="/tables">
-          Tables
-        </NavLink>
-        <div className="dropdown-divider" />
-        {profileSection}
-        <div className="dropdown-divider" />
-        <NavLink className="nav-link mb-2" to="/about">
-          About Delve Directory
-        </NavLink>
-      </nav>
-    );
-  }
+  return (
+    <nav className="nav flex-column text-light bg-dark serif h-100 pt-4">
+      <Link className="nav-link card-header" to="/">
+        Delve Directory
+      </Link>
+      <div className="dropdown-divider" />
+      <NavLink className="nav-link mb-auto" to="/tables">
+        Tables
+      </NavLink>
+      <div className="dropdown-divider" />
+      {profileSection()}
+      <div className="dropdown-divider" />
+      <NavLink className="nav-link mb-2" to="/about">
+        About Delve Directory
+      </NavLink>
+    </nav>
+  );
 }
 
-export default Menu;
+export default withRouter(Menu);

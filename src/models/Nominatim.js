@@ -13,7 +13,9 @@ export default class Nominatim {
       const params = Object.entries(NOMINATIM_PARAMS)
         .map((entry) => entry.join('='))
         .join('&');
-      return await axios.get(`${NOMINATIM_URL}/${query}?${params}`);
+      return await axios.get(`${NOMINATIM_URL}/${query}?${params}`, {
+        withCredentials: false,
+      });
     } catch (err) {
       console.log(err);
       return {

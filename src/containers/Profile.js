@@ -21,7 +21,7 @@ function Profile({ user, clientIpData }) {
   }
 
   return (
-    <Row>
+    <Row className="my-3">
       <Col md={6}>
         <Card className="m-3">
           <Card.Header>
