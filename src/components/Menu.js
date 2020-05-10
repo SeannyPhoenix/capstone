@@ -11,7 +11,6 @@ function Menu({ user, verify, history }) {
   }
 
   function profileSection() {
-    console.log(user);
     if (user) {
       return (
         <div>

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Row, Col, Card, Form,
 } from 'react-bootstrap';
-import {
-  Map as LeafletMap, TileLayer, Marker, Popup,
-} from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 import models from '../models';
 

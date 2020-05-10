@@ -30,4 +30,13 @@ export default class Seat {
       return error.response.data;
     }
   }
+
+  static async request(tableId, userId) {
+    try {
+      const response = await axios.post(`${REACT_APP_API_URL}/tables/${tableId}/request/${userId}`);
+      return response.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Col, Card, Form } from 'react-bootstrap';
 import models from '../../models';
 
-function TableGame({ table, getTable }) {
+function TableGame({ table, getTable, owner }) {
   const [origin, setOrigin] = useState(table.info || '');
   const [info, setInfo] = useState(origin);
   const [edit, setEdit] = useState(false);
@@ -42,13 +42,15 @@ function TableGame({ table, getTable }) {
                 info ? 'text-coffee' : 'text-muted'
               } info-entry`}
             />
-            <Form.Control
-              as="button"
-              className={dirty ? 'btn-warning' : 'btn-primary'}
-              onClick={action}
-            >
-              {edit ? 'Save' : 'Edit'}
-            </Form.Control>
+            {owner ? (
+              <Form.Control
+                as="button"
+                className={dirty ? 'btn-warning' : 'btn-primary'}
+                onClick={action}
+              >
+                {edit ? 'Save' : 'Edit'}
+              </Form.Control>
+            ) : null}
           </Form>
         </Card.Body>
       </Card>

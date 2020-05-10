@@ -8,7 +8,7 @@ import TableLocation from './TableLocation';
 import TablePublished from './TablePublished';
 import TableActions from './TableActions';
 
-function TableDetail({ table, getTable }) {
+function TableDetail({ table, getTable, owner }) {
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState(table);
 
@@ -62,7 +62,13 @@ function TableDetail({ table, getTable }) {
             <TableGame game={data.game} updateData={updateData} edit={edit} />
             <TableLocation zip={data.zip} updateData={updateData} edit={edit} />
             <TablePublished published={data.published} updateData={updateData} edit={edit} />
-            <TableActions table={table} edit={edit} setEdit={setEdit} doAction={doAction} />
+            <TableActions
+              table={table}
+              owner={owner}
+              edit={edit}
+              setEdit={setEdit}
+              doAction={doAction}
+            />
           </Row>
         </Card.Body>
       </Card>

@@ -7,27 +7,32 @@ import SeatIcon from './SeatIcon';
 import SeatListItem from './SeatListItem';
 import SeatEdit from './SeatEdit';
 
-function TableGame({ table, getTable }) {
+function TableSeats({
+  table, getTable, owner, user,
+}) {
   const [action, setAction] = useState({ action: '', id: null });
 
-  async function handleEdit(action, seatId, data) {
+  async function handleAction(action, seatId, data) {
     switch (action) {
-      case 'delete':
-        removeSeat(seatId);
+      case 'add':
+        await models.Seat.add(table._id);
         break;
-      case 'cancel':
+      case 'request':
         setAction({ action: '', id: null });
+        await models.Seat.request(table._id, user._id);
         break;
       case 'save':
         setAction({ action: '', id: null });
         await models.Seat.update(seatId, data);
         break;
+      case 'cancel':
+        setAction({ action: '', id: null });
+        break;
+      case 'delete':
+        removeSeat(seatId);
+        break;
       default:
     }
-  }
-
-  async function addSeat() {
-    await models.Seat.add(table._id);
     getTable();
   }
 
@@ -56,9 +61,9 @@ function TableGame({ table, getTable }) {
   ));
 
   function seatEdit() {
-    if (action.action === 'edit') {
+    if (owner && action.action === 'edit') {
       const seat = table.seats.find((seat) => seat._id === action.id);
-      return <SeatEdit seat={seat} handleEdit={handleEdit} />;
+      return <SeatEdit seat={seat} handleAction={handleAction} />;
     }
   }
 
@@ -68,8 +73,13 @@ function TableGame({ table, getTable }) {
         <Card.Header className="navbar">
           <span>Seats: </span>
           <ButtonGroup className="float-right">
-            <Button className="btn-primary" onClick={addSeat}>
-              Add Seat
+            <Button
+              className={`btn-primary ${user ? 'visible' : 'invisible'}`}
+              onClick={() => {
+                handleAction(owner ? 'add' : 'request');
+              }}
+            >
+              {owner ? 'Add Seat' : 'Request Seat'}
             </Button>
           </ButtonGroup>
         </Card.Header>
@@ -96,4 +106,4 @@ function TableGame({ table, getTable }) {
   );
 }
 
-export default TableGame;
+export default TableSeats;

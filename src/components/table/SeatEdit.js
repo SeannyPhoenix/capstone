@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-export default function SeatEdit({ seat, handleEdit }) {
+export default function SeatEdit({ seat, handleAction }) {
   // const [profile, setProfile] = useState(seat.profile);
   // const [role, setRole] = useState(seat.role);
 
@@ -9,7 +9,7 @@ export default function SeatEdit({ seat, handleEdit }) {
     if (event) {
       event.preventDefault();
     }
-    handleEdit('save', seat._id, {
+    handleAction('save', seat._id, {
       profile: event.target.profile.value,
       role: event.target.role.value,
     });
@@ -28,14 +28,14 @@ export default function SeatEdit({ seat, handleEdit }) {
         <Button type="submit">Save</Button>
         <Button
           onClick={() => {
-            handleEdit('delete', seat._id);
+            handleAction('delete', seat._id);
           }}
         >
           Delete
         </Button>
         <Button
           onClick={() => {
-            handleEdit('cancel');
+            handleAction('cancel');
           }}
         >
           Cancel
