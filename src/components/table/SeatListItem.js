@@ -8,7 +8,13 @@ import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import models from '../../models';
 
 export default function SeatListItem({
-  table, seat, action, setAction, owner, getTable,
+  table,
+  seat,
+  action,
+  setAction,
+  handleAction,
+  owner,
+  getTable,
 }) {
   const [highlight, setHighlight] = useState(action.action && action.id === seat._id);
   const [edit, setEdit] = useState(action.action === 'edit' && action.id === seat._id);
@@ -120,7 +126,7 @@ export default function SeatListItem({
                     className={owner ? 'visible' : 'invisible'}
                     icon={faTrashAlt}
                     onClick={() => {
-                      setAction('delete', seat._id);
+                      handleAction('delete', seat._id);
                     }}
                   />
                 </Button>

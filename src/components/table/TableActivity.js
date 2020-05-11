@@ -28,9 +28,11 @@ export default function TableActivity({ table, getTable, owner }) {
                 {requests}
               </div>
             </Accordion.Collapse>
-            <Accordion.Toggle as={Button} eventKey="messages" className="btn-block btn-primary">
-              Messages
-            </Accordion.Toggle>
+            <Accordion.Toggle
+              as={Button}
+              eventKey="messages"
+              className="btn-block btn-primary"
+            />
             <Accordion.Collapse eventKey="messages">
               <div className="my-2">Messages</div>
             </Accordion.Collapse>

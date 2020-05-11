@@ -64,7 +64,6 @@ export default function Directory({ clientIpData }) {
       center[0] || center.lat,
       10000,
     );
-    console.log(response);
     setTableList(response);
   }
 

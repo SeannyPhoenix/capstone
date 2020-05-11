@@ -62,6 +62,7 @@ function TableSeats({
       seat={seat}
       action={action}
       setAction={setAction}
+      handleAction={handleAction}
       owner={owner}
       getTable={getTable}
     />
