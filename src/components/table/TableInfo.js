@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Col, Card, Form } from 'react-bootstrap';
+import {
+  Col, Card, Form, Button,
+} from 'react-bootstrap';
 import models from '../../models';
 
 function TableGame({ table, getTable, owner }) {
@@ -44,7 +46,7 @@ function TableGame({ table, getTable, owner }) {
             />
             {owner ? (
               <Form.Control
-                as="button"
+                as={Button}
                 className={dirty ? 'btn-warning' : 'btn-primary'}
                 onClick={action}
               >

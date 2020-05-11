@@ -1,0 +1,8 @@
+#!/bin/bash
+echo Commit and Push
+gitacp
+echo Building...
+npm run-script build
+echo Syncing...
+aws s3 sync ./build/ s3://delve.amadigan.dev/
+echo Complete

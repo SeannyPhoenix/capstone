@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Row, Col, Card, Button, ButtonGroup,
+  Row, Col, Card, Button, ButtonGroup, Accordion,
 } from 'react-bootstrap';
 import models from '../../models';
 import SeatIcon from './SeatIcon';
@@ -57,14 +57,46 @@ function TableSeats({
   });
 
   const seatList = table.seats.map((seat) => (
-    <SeatListItem key={seat._id} seat={seat} action={action} setAction={setAction} />
+    <SeatListItem
+      key={seat._id}
+      table={table}
+      seat={seat}
+      action={action}
+      setAction={setAction}
+      owner={owner}
+      getTable={getTable}
+    />
   ));
 
-  function seatEdit() {
-    if (owner && action.action === 'edit') {
-      const seat = table.seats.find((seat) => seat._id === action.id);
-      return <SeatEdit seat={seat} handleAction={handleAction} />;
+  function seatButton() {
+    if (!user) {
+      return null;
     }
+    if (owner) {
+      return (
+        <Button
+          className="btn-primary"
+          onClick={() => {
+            handleAction('add');
+          }}
+        >
+          Add Seat
+        </Button>
+      );
+    }
+    if (!table.requests.filter((req) => req._id === user._id).length) {
+      return (
+        <Button
+          className="btn-primary"
+          onClick={() => {
+            handleAction('request');
+          }}
+        >
+          Request Seat
+        </Button>
+      );
+    }
+    return <Button className="btn-secondary">Request Sent</Button>;
   }
 
   return (
@@ -73,31 +105,23 @@ function TableSeats({
         <Card.Header className="navbar">
           <span>Seats: </span>
           <ButtonGroup className="float-right">
-            <Button
-              className={`btn-primary ${user ? 'visible' : 'invisible'}`}
-              onClick={() => {
-                handleAction(owner ? 'add' : 'request');
-              }}
-            >
-              {owner ? 'Add Seat' : 'Request Seat'}
-            </Button>
+            {seatButton()}
           </ButtonGroup>
         </Card.Header>
         <Card.Body>
           <Row>
-            <Col md={7}>
+            <Col>
               <div className="table-area">
                 <div className="table-top" />
                 {seatIcons}
               </div>
             </Col>
-            <Col md={5}>
-              {seatList}
-            </Col>
           </Row>
           <Row>
             <Col>
-              {seatEdit()}
+              <Accordion>
+                {seatList}
+              </Accordion>
             </Col>
           </Row>
         </Card.Body>
