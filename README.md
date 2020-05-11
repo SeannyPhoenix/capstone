@@ -84,6 +84,9 @@
     - [Nominatim](https://nominatim.org/)
   - Data
     - [US Zip Code Latitude and Longitude](https://public.opendatasoft.com/explore/dataset/us-zip-code-latitude-and-longitude/table/)
+  - Other Resources
+    - [Google Fonts](https://fonts.google.com/)
+    - [Amazon Web Services](https://aws.amazon.com)
 
 - Thoughts Upon Completion
   - I *still* spent too much time on littel details.
