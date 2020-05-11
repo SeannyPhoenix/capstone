@@ -112,7 +112,6 @@ class Register extends Component {
                       value={this.state.screenName}
                       onChange={this.updateField.bind(this)}
                     />
-                    <small>no spaces</small>
                   </div>
                   <div className="form-group">
                     <label htmlFor="email">Email:</label>
@@ -123,7 +122,6 @@ class Register extends Component {
                       value={this.state.email}
                       onChange={this.updateField.bind(this)}
                     />
-                    <small>.</small>
                   </div>
                   <div className="form-group">
                     <label htmlFor="password">Password:</label>
@@ -134,7 +132,6 @@ class Register extends Component {
                       value={this.state.password}
                       onChange={this.updateField.bind(this)}
                     />
-                    <small>stuff</small>
                   </div>
                 </div>
                 <div className="card-footer">

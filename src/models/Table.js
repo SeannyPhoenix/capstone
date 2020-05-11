@@ -22,6 +22,17 @@ export default class Table {
     }
   }
 
+  static async indexInRadius(longitude, latitude, radius) {
+    try {
+      const response = await axios.get(
+        `${REACT_APP_API_URL}/tables/near/${longitude}/${latitude}/${radius}`,
+      );
+      return response.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
+
   static async show(id) {
     try {
       const response = await axios.get(`${REACT_APP_API_URL}/tables/${id}`);

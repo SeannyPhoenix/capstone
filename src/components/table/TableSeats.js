@@ -5,7 +5,6 @@ import {
 import models from '../../models';
 import SeatIcon from './SeatIcon';
 import SeatListItem from './SeatListItem';
-import SeatEdit from './SeatEdit';
 
 function TableSeats({
   table, getTable, owner, user,

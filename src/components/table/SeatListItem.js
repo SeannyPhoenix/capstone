@@ -17,7 +17,7 @@ export default function SeatListItem({
   useEffect(() => {
     setHighlight(action.action && action.id === seat._id);
     setEdit(action.action === 'edit' && action.id === seat._id);
-  }, [action]);
+  }, [action, seat._id]);
 
   useEffect(() => {
     const list = Object.values(
@@ -30,7 +30,7 @@ export default function SeatListItem({
       ),
     );
     setSeatProfiles(list);
-  }, [owner, table.requests, table.seats]);
+  }, [table.owner, table.requests, table.seats]);
 
   async function updateProfile(profile) {
     await models.Seat.update(seat._id, { profile });
@@ -74,6 +74,14 @@ export default function SeatListItem({
                   {seat.profile ? seat.profile.screenName : 'Open Seat'}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
+                  <Dropdown.Item
+                    key={0}
+                    onClick={() => {
+                      updateProfile(null);
+                    }}
+                  >
+                    Open Seat
+                  </Dropdown.Item>
                   {seatOptions()}
                 </Dropdown.Menu>
               </Dropdown>

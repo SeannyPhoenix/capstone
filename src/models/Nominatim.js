@@ -5,6 +5,7 @@ const NOMINATIM_PARAMS = {
   format: 'json',
   limit: 10,
   polygon_svg: 1,
+  countrycodes: 'US',
 };
 
 export default class Nominatim {
@@ -13,14 +14,13 @@ export default class Nominatim {
       const params = Object.entries(NOMINATIM_PARAMS)
         .map((entry) => entry.join('='))
         .join('&');
-      return await axios.get(`${NOMINATIM_URL}/${query}?${params}`, {
+      const response = await axios.get(`${NOMINATIM_URL}/${query}?${params}`, {
         withCredentials: false,
       });
-    } catch (err) {
-      console.log(err);
-      return {
-        data: null,
-      };
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return error.response.data;
     }
   }
 }

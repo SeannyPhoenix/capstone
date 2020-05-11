@@ -1,6 +1,4 @@
 #!/bin/bash
-echo Commit and Push
-gitacp
 echo Building...
 npm run-script build
 echo Syncing...

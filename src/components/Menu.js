@@ -41,13 +41,9 @@ function Menu({ user, verify, history }) {
         Delve Directory
       </Link>
       <div className="dropdown-divider" />
-      <NavLink className="nav-link mb-auto" to="/tables">
-        Tables
-      </NavLink>
-      <div className="dropdown-divider" />
       {profileSection()}
       <div className="dropdown-divider" />
-      <NavLink className="nav-link mb-2" to="/about">
+      <NavLink className="nav-link mt-auto mb-2" to="/about">
         About Delve Directory
       </NavLink>
     </nav>
