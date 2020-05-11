@@ -51,30 +51,6 @@ export default function ProfileMap({ user, clientIpData, tables }) {
       <Card className="m-3">
         <Card.Header>Location</Card.Header>
         <Card.Body>
-          <Form>
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text className="px-1 pointer">
-                  <FontAwesomeIcon icon={faDotCircle} fixedWidth className="mx-1 text-coffee" />
-                </InputGroup.Text>
-              </InputGroup.Prepend>
-              <Form.Control
-                type="text"
-                value={searchString}
-                onChange={(event) => setSearchString(event.target.value)}
-                className="border-none"
-              />
-              <InputGroup.Append>
-                <InputGroup.Text className="px-1 pointer">
-                  <FontAwesomeIcon
-                    icon={faSearchLocation}
-                    fixedWidth
-                    className="mx-1 text-coffee"
-                  />
-                </InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-          </Form>
           {buildMap()}
         </Card.Body>
       </Card>

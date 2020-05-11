@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
-  Row, Col, Card, Form, InputGroup, ButtonGroup, Button, Table,
+  Row, Col, Card, Table,
 } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearchLocation } from '@fortawesome/free-solid-svg-icons';
-import { faDotCircle } from '@fortawesome/free-regular-svg-icons';
 import { Map as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import SearchControls from '../components/SearchControls';
 import models from '../models';
@@ -65,8 +62,9 @@ export default function Directory({ clientIpData }) {
     const response = await models.Table.indexInRadius(
       center[1] || center.lng,
       center[0] || center.lat,
-      5000,
+      10000,
     );
+    console.log(response);
     setTableList(response);
   }
 

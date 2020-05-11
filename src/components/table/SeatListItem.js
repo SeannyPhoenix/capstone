@@ -116,7 +116,13 @@ export default function SeatListItem({
             <Col sm={3}>
               <ButtonGroup className="text-coffee">
                 <Button variant="none">
-                  <FontAwesomeIcon visible={edit} icon={faTrashAlt} onClick={() => {}} />
+                  <FontAwesomeIcon
+                    className={owner ? 'visible' : 'invisible'}
+                    icon={faTrashAlt}
+                    onClick={() => {
+                      setAction('delete', seat._id);
+                    }}
+                  />
                 </Button>
                 <Accordion.Toggle
                   eventKey={seat._id}

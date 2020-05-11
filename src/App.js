@@ -65,10 +65,10 @@ class App extends Component {
     return (
       <Container fluid>
         <Row className="vh-100">
-          <div className="col-2 bg-dark d-none d-lg-block">
+          <div className="col-md-2 bg-dark">
             <Menu user={this.state.user} verify={this.verify.bind(this)} />
           </div>
-          <div className="col-lg-10 col-12">
+          <div className="col-md-10">
             <Routes
               addToast={this.addToast.bind(this)}
               user={this.state.user}
