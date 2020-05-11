@@ -50,19 +50,19 @@
 * Milestones
 
   1. Implement Users
-    * Register
-    * Log In
-    * Log Out
+    * Register √
+    * Log In √
+    * Log Out √
   2. Implement Tables
-    * Create table
-    * List tables
-    * Request seat
-    * Assign seat
+    * Create table √
+    * List tables √
+    * Request seat √
+    * Assign seat √
   3. Implement Location Search
     * Filter tables by game and role
-    * Search tables in a location
-    * Show tables in a zip code
-    * Show tables in a specified radius
+    * Search tables in a location √
+    * Show tables in a zip code √
+    * Show tables in a specified radius √
   4. Implement Scroll Menu
     * Create sliding menu
     * Add map-style menu
