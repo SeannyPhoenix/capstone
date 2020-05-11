@@ -78,8 +78,19 @@
   - Packages
     - [Leaflet](https://leafletjs.com/)
     - [React Leaflet](https://react-leaflet.js.org/)
+    - [React Bootstrap](https://react-bootstrap.github.io/)
     - [FontAwesome](https://fontawesome.com/)
   - APIs
     - [Nominatim](https://nominatim.org/)
   - Data
     - [US Zip Code Latitude and Longitude](https://public.opendatasoft.com/explore/dataset/us-zip-code-latitude-and-longitude/table/)
+
+- Thoughts Upon Completion
+  - I *still* spent too much time on littel details.
+  - I am proud of myself for my custom Sass.
+  - I am super glad I dove into React Hooks... I am looking forward to refactoring. Hooks are so much simpler and cleaner than traditional class components.
+  - It took a while to get indexes to work in the Mongo database for my Geospatial Queries, but the payoff was worth the frustration.
+  - The choice to host on AWS ended up taking an entire day's worth of setup and debugging, stealing time from actual work on my project. However, I believe it was the right choice.
+  - So grateful to my roommate [Andy](https://github.com/amadigan) for his help with the AWS deployment, as well as several other parts of my process.
+  - This project ended up being very similar to my original concept, and I hope I can continue to implement new features and improve it for actual use in the future.
+  - I would like to add a style picker. Perhaps I will develop styles for each TTRPG system. I also want to let the user choose the map tiles.
