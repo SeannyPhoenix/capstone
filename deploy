@@ -1,6 +1,13 @@
 #!/bin/bash
-echo Building...
+echo Syncing Api...
+echo API Sync Complete
+rsync --exclude='*/node_modules/*' -r -v api aws-server:/home/ec2-user/delve-directory/
+cd client
+echo Building Client...
 npm run-script build
-echo Syncing...
+echo Client Build Complete
+echo Syncing Client...
 aws s3 sync ./build/ s3://delve.amadigan.dev/
-echo Complete
+echo Client Sync Complete
+echo Full Deploy Complete
+echo Make sure to seed and restart API server if necessary
